@@ -3,19 +3,26 @@
 	grid-template-columns: 7fr 3fr;
   top:0;right: 0;left:0;
   margin: auto;
-  width:75%;
+  width:fit-content;
   height: auto;
   /* border: 1px solid; */
 }
-
+.icongrid{
+  width:100%;
+  height:auto;
+  display:flex;
+  cursor: pointer;
+  background: #252526;
+  border-radius: 5px;
+}
 .myId {
 	border-radius: 5px;
 	padding:10px;
-	margin-left: 10px;
+	/* margin-left:-10px; */
   background-color: #414141;
   width:auto;
-  height: 450px;
-  margin-top: 20px;
+  height:auto;
+  margin-top:5px;
 }
 
 .call-button {
@@ -48,13 +55,16 @@
 	text-align: center;
 	color: #0066b8;
 }
-
+#except{
+  margin-left: 12px;
+}
 body {
 	background: #252526; /* fallback for old browsers */
 
 }
 #config{
   width:300px;
+  margin-left: 10px;
 }
 
 #openconfig{

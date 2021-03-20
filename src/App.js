@@ -4,12 +4,18 @@ import TextField from '@material-ui/core/TextField';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import CancelIcon from '@material-ui/icons/Cancel';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import VideoCallIcon from '@material-ui/icons/VideoCall';
+import MicRoundedIcon from '@material-ui/icons/MicRounded';
+import MicOffRoundedIcon from '@material-ui/icons/MicOffRounded';
+import VideocamOffRoundedIcon from '@material-ui/icons/VideocamOffRounded';
 import PhoneIcon from '@material-ui/icons/Phone';
 import React, { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 import './App.css';
+import Avatar from '@material-ui/core/Avatar';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
 const socket = io('https://avivid.herokuapp.com', {
 	withCredentials: true,
@@ -27,16 +33,20 @@ function App() {
 	const [idToCall, setIdToCall] = useState('');
 	const [callEnded, setCallEnded] = useState(false);
 	const [name, setName] = useState('');
+	const [vidcancel, setvidcancel] = useState(false);
+	const [audicanel, setaudicanel] = useState(false);
+
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
 
-	useEffect(() => {
-		navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {
-			setStream(stream);
-			myVideo.current.srcObject = stream;
-		});
 
+	const constrain = {
+		video: false, 
+		audio: true
+	}
+
+	useEffect(() => {
 		socket.on('me', (id) => {
 			setMe(id);
 		});
@@ -48,6 +58,28 @@ function App() {
 			setCallerSignal(data.signal);
 		});
 	}, []);
+
+
+
+	const useVideo = ()=>{
+        setvidcancel(false)
+		setaudicanel(true)
+		navigator.mediaDevices.getUserMedia({video: true, audio:true}).then((stream) => {
+			setStream(stream);
+			myVideo.current.srcObject = stream;
+		});
+
+	}
+
+	const useAudio = ()=>{
+        setvidcancel(true)
+		setaudicanel(false)
+
+		navigator.mediaDevices.getUserMedia({video: false, audio:true}).then((stream) => {
+			setStream(stream);
+			myVideo.current.srcObject = stream;
+		});
+	}
 
 	const callUser = (id) => {
 		const peer = new Peer({
@@ -103,9 +135,35 @@ function App() {
 			<div className="container">
        <center>
 
-				<div className="myId">
-				
+				<div id="firstbox" className="myId">
+
+				 <div className="icongrid">
+				<Button onClick={useVideo}>
+				{vidcancel?
+                 <VideocamOffRoundedIcon style={{fontSize:40}}  fontSize={'large'} color="primary"/>
+				:
+				 <VideoCallIcon  style={{fontSize:40}}  fontSize={'large'} color="primary"/>
+			    }
+				</Button>
+
+				<Button onClick={useAudio}>
+					{audicanel?
+                     <MicOffRoundedIcon style={{fontSize:40}}  fontSize={'large'} color="secondary"/>
+					:
+                    <MicRoundedIcon style={{fontSize:40}}  fontSize={'large'} color="secondary"/>}
+				</Button>
+				 </div>
+
 					<div className="video">
+						{audicanel?(
+						<AvatarGroup max={4}>
+							<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+							<Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+							<Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+							<Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
+							<Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+						</AvatarGroup>
+						):null}
 						<div className={callAccepted && !callEnded ? 'video2' : 'video'}>
 							{stream && (
 								<video
@@ -180,11 +238,11 @@ function App() {
 					</div>  
 				</div>
         ):(
-          <center>
-          <Button onClick={()=>setConfig(true)} id="openconfig" style={{background:'#0066b8',width:'94%',margin:20,display:'flex'}} variant="contained" color="secondary" startIcon={<MenuBookIcon fontSize="larger" />}>
+          <div id="except" className="myId">
+          <Button onClick={()=>setConfig(true)} id="openconfig" style={{background:'#0066b8',width:'100%',margin:0,display:'flex',height:50,fontWeight:'bold'}} variant="contained" color="secondary" startIcon={<MenuBookIcon fontSize="larger" />}>
             Menu Book
           </Button>
-          </center>
+          </div>
         )}
 				
 			</div>
