@@ -179,7 +179,7 @@ function App() {
 						):(
 							<div className="video">
 					
-						<div className={callAccepted && !callEnded ? 'video2' : 'video'}>
+						<div className={callAccepted && !callEnded ? 'video2' : 'video2'}>
 							{stream && (
 								<video
 									playsInline
@@ -189,10 +189,11 @@ function App() {
 									style={{ width: '100%', height: '100%' }}
 								/>
 							)}
-						</div>
-						{callAccepted && !callEnded ? (
+							{callAccepted && !callEnded ? (
 							<video playsInline ref={userVideo} autoPlay style={{ width: '100%', height: '100%' }} />
 						) : null}
+						</div>
+						
 					</div>
 						)}
 					
