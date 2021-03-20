@@ -134,7 +134,7 @@ function App() {
 
 	return (
 		<>
-			<h1 style={{ textAlign: 'center', color: '#fff' }}>Zoomable</h1>
+			<h1 style={{ textAlign: 'center', color: '#fff' }}>Oberry</h1>
 			<div className="container">
        <center>
 
@@ -238,7 +238,7 @@ function App() {
 							</Button>
 						) : (
 							<IconButton color="secondary" aria-label="call" onClick={() => callUser(idToCall)}>
-								<PhoneIcon  fontSize="large" />
+								<PhoneIcon style={{fontSize:40}}  fontSize={"large"} />
 							</IconButton>
 						)}
 						{idToCall}
