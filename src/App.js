@@ -9,7 +9,9 @@ import Peer from "simple-peer"
 import io from "socket.io-client"
 import "./App.css"
 
-const socket = io.connect('https://avivid.herokuapp.com/')
+const socket = io('https://avivid.herokuapp.com',{
+  withCredentials: true,
+})
 
 
 function App() {
