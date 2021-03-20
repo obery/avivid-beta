@@ -16,7 +16,7 @@ import io from 'socket.io-client';
 import './App.css';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import logo from './logo192.png'
+import logo from './assets/logo192.png'
 
 const socket = io('https://avivid.herokuapp.com', {
 	withCredentials: true,
@@ -156,7 +156,7 @@ function App() {
 				 </div>
 
 					<div className="video">
-						{!audicanel?(
+						{vidcancel?(
 						<AvatarGroup max={2}>
 							<Avatar alt="Remy Sharp" src={logo} />
 							<Avatar alt="Travis Howard" src={logo} />
