@@ -103,16 +103,18 @@ function App() {
 			<h1 style={{ textAlign: "center", color: '#fff' }}>Zoomish</h1>
 		<div className="container">
 			<div className="video-container">
-				<div className="video">
-					{stream &&  <video playsInline muted ref={myVideo} autoPlay style={{ width: "300px" }} />}
-				</div>
-				<div className="video">
-					{callAccepted && !callEnded ?
-					<video playsInline ref={userVideo} autoPlay style={{ width: "300px"}} />:
-					null}
-				</div>
+			
 			</div>
 			<div className="myId">
+       <div className="video">
+       <div className={callAccepted && !callEnded ?"video2":"video"}>
+					{stream &&  <video playsInline muted ref={myVideo} autoPlay style={{ width:'100%',height:'100%'}} />}
+				</div>
+					{callAccepted && !callEnded ?
+					<video playsInline ref={userVideo} autoPlay style={{ width:'100%',height:'100%'}} />:
+					null}
+				</div>
+       
 				<TextField
 					id="filled-basic"
 					label="Name"
