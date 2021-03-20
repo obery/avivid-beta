@@ -157,7 +157,7 @@ function App() {
 				</Button>
 				 </div>
 				       {vidcancel?(
-							<center>
+							<center style={{width:200,marginTop:10}}>
                         <AvatarGroup  max={2}>
 							<Avatar style={{height:100,width:100}} alt="Remy Sharp" src={logo2} />
 							<Avatar style={{height:100,width:100}}  alt="Travis Howard" src={logo} />
