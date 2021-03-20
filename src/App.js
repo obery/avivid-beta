@@ -3,7 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import CancelIcon from '@material-ui/icons/Cancel';
-import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import PhoneIcon from '@material-ui/icons/Phone';
 import React, { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -134,7 +134,7 @@ function App() {
             <CancelIcon onClick={()=>setConfig(false)} color="secondary" fontSize="large" />
 					<TextField
 						id="filled-basic"
-						label="Name"
+						label="Enter Chat Name"
 						variant="outlined"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
@@ -150,7 +150,7 @@ function App() {
 
 					<TextField
 						id="filled-basic"
-						label="ID to call"
+						label="Channel ID to call"
 						variant="outlined"
 						value={idToCall}
 						onChange={(e) => setIdToCall(e.target.value)}
@@ -181,8 +181,8 @@ function App() {
 				</div>
         ):(
           <center>
-          <Button onClick={()=>setConfig(true)} id="openconfig" style={{background:'#0066b8',width:'95%',margin:15,display:'flex'}} variant="contained" color="secondary" startIcon={<PlayCircleFilledWhiteIcon fontSize="small" />}>
-            start
+          <Button onClick={()=>setConfig(true)} id="openconfig" style={{background:'#0066b8',width:'94%',margin:20,display:'flex'}} variant="contained" color="secondary" startIcon={<MenuBookIcon fontSize="larger" />}>
+            Menu Book
           </Button>
           </center>
         )}
