@@ -18,6 +18,8 @@ import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import logo from './assets/ps.jpg'
 import logo2 from './assets/ph.jpg'
+import mainlogo from './assets/logo.png'
+
 
 
 const socket = io('https://avivid.herokuapp.com', {
@@ -38,16 +40,12 @@ function App() {
 	const [name, setName] = useState('');
 	const [vidcancel, setvidcancel] = useState(false);
 	const [audicanel, setaudicanel] = useState(false);
-
+	const [selected,setselected] = useState(false)
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
 
 
-	const constrain = {
-		video: false, 
-		audio: true
-	}
 
 	useEffect(() => {
 		socket.on('me', (id) => {
@@ -67,6 +65,7 @@ function App() {
 	const useVideo = ()=>{
         setvidcancel(false)
 		setaudicanel(true)
+		setselected(true)
 		navigator.mediaDevices.getUserMedia({video: true, audio:true}).then((stream) => {
 			setStream(stream);
 			myVideo.current.srcObject = stream;
@@ -77,6 +76,7 @@ function App() {
 	const useAudio = ()=>{
         setvidcancel(true)
 		setaudicanel(false)
+		setselected(true)
 
 		navigator.mediaDevices.getUserMedia({video: false, audio:true}).then((stream) => {
 			setStream(stream);
@@ -134,7 +134,7 @@ function App() {
 
 	return (
 		<>
-			<h1 style={{ textAlign: 'center', color: '#fff' }}>Oberry</h1>
+			<img className="logo" src={mainlogo}/>
 			<div className="container">
        <center>
 
@@ -200,11 +200,12 @@ function App() {
         </center>
 
 
-       
-
 				{/* second pane  */}
-
-        {showConfig?(
+       {!selected?(
+         null
+	   ):
+	   <div>
+		   {showConfig?(
           <div id="config" className="myId">
             <CancelIcon onClick={()=>setConfig(false)} color="secondary" fontSize="large" />
 					<TextField
@@ -261,6 +262,9 @@ function App() {
           </Button>
           </div>
         )}
+	   </div>
+	   }
+        
 				
 			</div>
 		</>

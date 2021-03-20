@@ -22,7 +22,7 @@
   background-color: #414141;
   width:auto;
   height:auto;
-  /* margin-top:5px; */
+  margin-top:90px;
 }
 
 .call-button {
@@ -62,6 +62,13 @@
 body {
 	background: #252526; /* fallback for old browsers */
 
+}
+.logo{
+  height:50px;
+  top:0;right: 0;left: 0;
+  margin:auto;
+  position: absolute;
+  margin-top: 20px;
 }
 #config{
   width:300px;
