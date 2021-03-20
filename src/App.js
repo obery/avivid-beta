@@ -9,6 +9,8 @@ import Peer from "simple-peer"
 import io from "socket.io-client"
 import "./App.css"
 
+import Reactpip from 'react-picture-in-picture'
+
 const socket = io('https://avivid.herokuapp.com',{
   withCredentials: true,
 })
@@ -102,12 +104,19 @@ function App() {
 		<div className="container">
 			<div className="video-container">
 				<div className="video">
-					{stream &&  <video playsInline muted ref={myVideo} autoPlay style={{ width: "300px" }} />}
-				</div>
+					{stream &&  
+            <Reactpip isActive= {true} >
+              <video playsInline muted ref={myVideo} autoPlay style={{ width: "300px" }} />
+            </Reactpip>
+          }
+        </div>
 				<div className="video">
 					{callAccepted && !callEnded ?
+          <Reactpip isActive= {true} >
 					<video playsInline ref={userVideo} autoPlay style={{ width: "300px"}} />:
-					null}
+				</Reactpip>
+          :null}
+
 				</div>
 			</div>
 			<div className="myId">
