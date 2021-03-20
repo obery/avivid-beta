@@ -16,7 +16,9 @@ import io from 'socket.io-client';
 import './App.css';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import logo from './assets/logo192.png'
+import logo from './assets/ps.jpg'
+import logo2 from './assets/ph.jpg'
+
 
 const socket = io('https://avivid.herokuapp.com', {
 	withCredentials: true,
@@ -154,15 +156,29 @@ function App() {
                     <MicRoundedIcon style={{fontSize:40}}  fontSize={'large'} color="secondary"/>}
 				</Button>
 				 </div>
-
-					<div className="video">
-						{vidcancel?(
-						<AvatarGroup max={2}>
-							<Avatar alt="Remy Sharp" src={logo} />
-							<Avatar alt="Travis Howard" src={logo} />
-							<Avatar alt="Cindy Baker" src={logo} />
+				       {vidcancel?(
+							<center>
+                        <AvatarGroup  max={2}>
+							<Avatar style={{height:100,width:100}} alt="Remy Sharp" src={logo2} />
+							<Avatar style={{height:100,width:100}}  alt="Travis Howard" src={logo} />
 						</AvatarGroup>
-						):null}
+						{stream && (
+								<audio
+									playsInline
+									muted
+									ref={myVideo}
+									autoPlay
+									style={{ width: '100%', height: '100%' }}
+								/>
+							)}
+							{callAccepted && !callEnded ? (
+							<audio playsInline ref={userVideo} autoPlay style={{ width: '100%', height: '100%' }} />
+						) : null}
+							</center>
+						
+						):(
+							<div className="video">
+					
 						<div className={callAccepted && !callEnded ? 'video2' : 'video'}>
 							{stream && (
 								<video
@@ -178,6 +194,8 @@ function App() {
 							<video playsInline ref={userVideo} autoPlay style={{ width: '100%', height: '100%' }} />
 						) : null}
 					</div>
+						)}
+					
 				</div>
         </center>
 
