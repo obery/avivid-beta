@@ -132,19 +132,17 @@ function App() {
         {showConfig?(
           <div id="config" className="myId">
             <CancelIcon onClick={()=>setConfig(false)} color="secondary" fontSize="large" />
-            <br/> 
 					<TextField
 						id="filled-basic"
 						label="Name"
 						variant="outlined"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
-						style={{ backgroundColor: 'white',height:55,borderRadius:5,width:'100%'}}
+						style={{ backgroundColor: 'white',height:55,borderRadius:5,width:'100%',marginTop:10}}
 						className="inp"
 					/>
-            <br/>
 
-					<CopyToClipboard text={me} style={{ marginBottom: '1rem' }}>
+					<CopyToClipboard text={me} style={{height:40,width:'100%',marginTop:10}}>
 						<Button style={{background:'#0066b8'}} variant="contained" color="secondary" startIcon={<AssignmentIcon fontSize="large" />}>
 							Create Channel
 						</Button>
@@ -156,7 +154,7 @@ function App() {
 						variant="outlined"
 						value={idToCall}
 						onChange={(e) => setIdToCall(e.target.value)}
-            style={{ backgroundColor: 'white',height:55,borderRadius:5,width:'100%'}}
+            style={{ backgroundColor: 'white',height:55,borderRadius:5,width:'100%',marginTop:10}}
 					/>
 					<div className="call-button">
 						{callAccepted && !callEnded ? (
