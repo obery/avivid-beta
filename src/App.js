@@ -106,6 +106,16 @@ function App() {
 			
 			</div>
 			<div className="myId">
+      <div>
+				{receivingCall && !callAccepted ? (
+						<div className="caller">
+						<h1 >{name} is calling...</h1>
+						<Button variant="contained" color="primary" onClick={answerCall}>
+							Answer
+						</Button>
+					</div>
+				) : null}
+			</div>
        <div className="video">
        <div className={callAccepted && !callEnded ?"video2":"video"}>
 					{stream &&  <video playsInline muted ref={myVideo} autoPlay style={{ width:'100%',height:'100%'}} />}
@@ -149,16 +159,7 @@ function App() {
 					{idToCall}
 				</div>
 			</div>
-			<div>
-				{receivingCall && !callAccepted ? (
-						<div className="caller">
-						<h1 >{name} is calling...</h1>
-						<Button variant="contained" color="primary" onClick={answerCall}>
-							Answer
-						</Button>
-					</div>
-				) : null}
-			</div>
+		
 		</div>
 		</>
 	)
