@@ -240,7 +240,7 @@ function App() {
 							</Button>
 						) : (
 							<IconButton color="secondary" aria-label="call" onClick={() => callUser(idToCall)}>
-								<PhoneIcon  fontSize="large" />
+								<PhoneIcon style={{fontSize:70}} fontSize="large" />
 							</IconButton>
 						)}
 						{idToCall}
