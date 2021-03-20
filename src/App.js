@@ -16,6 +16,7 @@ import io from 'socket.io-client';
 import './App.css';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import logo from './logo192.png'
 
 const socket = io('https://avivid.herokuapp.com', {
 	withCredentials: true,
@@ -136,7 +137,7 @@ function App() {
        <center>
 
 				<div id="firstbox" className="myId">
-
+				
 				 <div className="icongrid">
 				<Button onClick={useVideo}>
 				{vidcancel?
@@ -155,13 +156,11 @@ function App() {
 				 </div>
 
 					<div className="video">
-						{audicanel?(
-						<AvatarGroup max={4}>
-							<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-							<Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-							<Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-							<Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-							<Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+						{!audicanel?(
+						<AvatarGroup max={2}>
+							<Avatar alt="Remy Sharp" src={logo} />
+							<Avatar alt="Travis Howard" src={logo} />
+							<Avatar alt="Cindy Baker" src={logo} />
 						</AvatarGroup>
 						):null}
 						<div className={callAccepted && !callEnded ? 'video2' : 'video'}>
