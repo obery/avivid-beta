@@ -179,7 +179,7 @@ function App() {
 						):(
 							<div className="video">
 					
-						<div className={callAccepted && !callEnded ? 'video2' : 'video2'}>
+						<div className={callAccepted && !callEnded ? 'video2' : 'video'}>
 							{stream && (
 								<video
 									playsInline
