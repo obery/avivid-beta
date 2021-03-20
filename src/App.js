@@ -91,6 +91,7 @@ function App() {
 			stream: stream,
 		});
 		peer.on('signal', (data) => {
+			console.log(data)
 			socket.emit('callUser', {
 				userToCall: id,
 				signalData: data,
@@ -189,11 +190,11 @@ function App() {
 									style={{ width: '100%', height: '100%' }}
 								/>
 							)}
-							{callAccepted && !callEnded ? (
+							
+						</div>
+						{callAccepted && !callEnded ? (
 							<video playsInline ref={userVideo} autoPlay style={{ width: '100%', height: '100%' }} />
 						) : null}
-						</div>
-						
 					</div>
 						)}
 					
