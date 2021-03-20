@@ -91,7 +91,6 @@ function App() {
 			stream: stream,
 		});
 		peer.on('signal', (data) => {
-			console.log(data)
 			socket.emit('callUser', {
 				userToCall: id,
 				signalData: data,
@@ -135,7 +134,7 @@ function App() {
 
 	return (
 		<>
-			<h1 style={{ textAlign: 'center', color: '#fff' }}>Zoomish</h1>
+			<h1 style={{ textAlign: 'center', color: '#fff' }}>Zoomable</h1>
 			<div className="container">
        <center>
 
@@ -158,7 +157,7 @@ function App() {
 				</Button>
 				 </div>
 				       {vidcancel?(
-							<center style={{width:200,marginTop:10}}>
+							<center style={{marginTop:10}}>
                         <AvatarGroup  max={2}>
 							<Avatar style={{height:100,width:100}} alt="Remy Sharp" src={logo2} />
 							<Avatar style={{height:100,width:100}}  alt="Travis Howard" src={logo} />
@@ -190,7 +189,6 @@ function App() {
 									style={{ width: '100%', height: '100%' }}
 								/>
 							)}
-							
 						</div>
 						{callAccepted && !callEnded ? (
 							<video playsInline ref={userVideo} autoPlay style={{ width: '100%', height: '100%' }} />
@@ -240,7 +238,7 @@ function App() {
 							</Button>
 						) : (
 							<IconButton color="secondary" aria-label="call" onClick={() => callUser(idToCall)}>
-								<PhoneIcon style={{fontSize:70}} fontSize="large" />
+								<PhoneIcon  fontSize="large" />
 							</IconButton>
 						)}
 						{idToCall}
