@@ -19,6 +19,8 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import logo from './assets/ps.jpg'
 import logo2 from './assets/ph.jpg'
 import mainlogo from './assets/logo.png'
+import addlogo from './assets/he.png'
+
 
 
 
@@ -265,8 +267,12 @@ function App() {
 	   </div>
 	   }
         
+		
 				
 			</div>
+		{/* <div className="adds">
+		   <img className="addlogo" src={addlogo}/>
+		</div> */}
 		</>
 	);
 }

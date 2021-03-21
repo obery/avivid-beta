@@ -75,6 +75,18 @@ body {
   margin-left: 10px;
   z-index:90000;
 }
+.addlogo{
+  height:200px;
+}
+.adds{
+  border: 1px solid;
+  padding:10px;
+  /* background:white; */
+  width:320px;
+  top:0;right: 0;left: 0;
+  margin:auto;
+  margin-top: 10px;
+}
 
 #openconfig{
   display:none
